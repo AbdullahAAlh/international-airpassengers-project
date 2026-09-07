@@ -1,3 +1,5 @@
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
+# AutoGluon fit artifacts (the predictor writes here by default)
+AutogluonModels/

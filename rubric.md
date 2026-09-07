@@ -1,6 +1,6 @@
 # Capstone rubric
 
-Total 100, plus extra credit. The four sections are the course spine, made
+Total 100, plus extra credit. The sections are the course spine, made
 checkable. Grade the work that is there; a defensible wrong answer scores
 higher than an undefendable right one.
 
@@ -13,24 +13,31 @@ higher than an undefendable right one.
 | 5 | Trend and seasonal strength computed (textbook formulas), with a sentence on what they imply for model choice |
 | 5 | ACF of the raw series; knows what the lag-12 spike means; states the shape in one or two sentences a non-forecaster could repeat |
 
-## B — Floor and evaluation (30)
+## B — The floor and what it leaves (20)
 
 | point | criterion |
 |---|---|
 | 8 | Fits the seasonal naive (the floor) and at least one other benchmark |
-| 8 | Cross-validates over rolling origins (8 windows, h=12, step=12) through the harness — not one holdout |
-| 7 | Reports per model: MASE, scaled CRPS, and 80% coverage; reads coverage against the nominal 80% and says what the gap means |
-| 7 | Ljung-Box on the floor's residuals, with a sentence on what structure is left on the table and which kind of model eats it |
+| 7 | Ljung-Box on the floor's residuals (`y_t - y_{t-12}`), with a sentence on what structure is left on the table and which kind of model eats it |
+| 5 | Gives the floor an honest interval and reads its 80% coverage against the nominal 80% |
 
-## C — Your model (25)
+## C — The framework (15)
 
 | point | criterion |
 |---|---|
-| 8 | Fits ETS and reads it back: which (E,T,S) variant the search chose, what each letter says, and whether it matches the section-1 read |
-| 9 | Cross-validates on the SAME folds with the same harness and levels; compares against the floor on the point forecast AND the distribution (a win on one and a loss on the other is reported as both) |
-| 8 | If any black-box tool is used: names what it picked and says in one sentence why its output is or is not readable |
+| 5 | The data conversion to AutoGluon's frame is done by hand and visible — not hidden behind a helper |
+| 5 | Fits a real zoo (more than one model), and the leaderboard is displayed on the held-out months |
+| 5 | Reads the leaderboard: names the **sign** of `score_val` and how many windows it scored, and says in one sentence what that ranking can and cannot be trusted to do |
 
-## D — The report (25)
+## D — The harness (20)
+
+| point | criterion |
+|---|---|
+| 8 | Cross-validates the shortlisted model over the SAME rolling origins (8 windows, h=12, step=12) as the floor — through the harness, not one holdout |
+| 7 | One table, one row per model: MASE, scaled CRPS, and 80% coverage; reads each model against the floor |
+| 5 | Reports where the model beats the floor and where it loses, on which metric — a win on the point and a loss on the distribution is reported as both; coverage verdict included |
+
+## E — The report (25)
 
 | point | criterion |
 |---|---|
@@ -43,7 +50,8 @@ higher than an undefendable right one.
 ## Anti-patterns (deductions, stack)
 
 - MASE reported without CRPS or coverage — the number is half a result (−5)
-- One holdout window presented as evidence for a ranking (−10)
+- One holdout window (including AutoGluon's own single split) presented as
+  evidence for a ranking (−10)
 - No benchmark floor, or the floor present but not compared (−10)
 - No intervals anywhere in the notebook or the report (−10)
 - A framework result quoted without saying what it fits or how it ranked
@@ -51,10 +59,8 @@ higher than an undefendable right one.
 - Leakage of any kind: a feature, a fit, or a denominator touching data the
   fold was not allowed to see (−15, and flag it to the student)
 
-## Extra credit (10 points each)
+## Extra credit (10 points)
 
 - Dynamic regression on a driver you source and cache (e.g. monthly mean
   temperature from a public weather archive), with the cross-validation
-  discipline applied to the regression's residuals (10)
-- AutoGluon on the same series: what does its internal leaderboard claim,
-  and does it survive your harness? (10)
+  discipline applied to the regression's residuals.

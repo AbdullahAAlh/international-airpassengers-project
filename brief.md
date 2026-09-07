@@ -10,14 +10,15 @@ R-datasets; no download step.
 ## The job
 
 The course pipeline, on this series: explore it, decompose it, set the
-benchmark floor, check what the floor leaves on the table, fit a model,
-cross-validate, and read the result against the floor.
+benchmark floor, check what the floor leaves on the table, fit a model
+through the framework, cross-validate, and read the result against the
+floor.
 
 ## Deliverables
 
 1. **The notebook**, built on `project.ipynb`, in order: exploration,
-   decomposition, the floor, your model, the cross-validation. Every chart
-   carries its claim. Runs top to bottom in under ten minutes on Colab.
+   the floor, your model, the cross-validation. Every chart carries its
+   claim. Runs top to bottom in under ten minutes on Colab.
 
 2. **The report**, two to three pages, for a manager who will not open the
    notebook:
@@ -32,8 +33,7 @@ cross-validate, and read the result against the floor.
 3. **Extra credit (optional).** Dynamic regression on a driver you source
    (e.g. monthly mean temperature from a public weather archive such as
    Open-Meteo — free, no key), cached as a CSV — the cross-validation
-   discipline still applies to the regression's residuals. Or: run the same
-   job through AutoGluon and compare its leaderboard with your harness.
+   discipline still applies to the regression's residuals.
 
 ## What is graded
 
@@ -52,6 +52,13 @@ wins.
 
 ## Submission
 
-Deadline: **Saturday, 29 August.** Work in your fork of this repo: the
-completed notebook and the report (as `report.md`) go in the fork, and you
-submit the fork's URL. The notebook is graded as it runs.
+1. **Fork** this repo on GitHub (Fork → create it under your own account).
+2. **Solve** it in your fork: fill in the TODO cells in `project.ipynb` and
+   write the report as `report.md`.
+3. **Commit** your work to your fork.
+4. **Push**, so the notebook and the report live on GitHub — not just in a
+   runtime.
+5. Submit **your fork's URL**. The notebook is graded as it runs, in the
+   state you pushed.
+
+Deadline: **00:00, Tuesday 8 September 2026**.

@@ -15,8 +15,8 @@ dependencies = [
     "seaborn>=0.13",
 ]
 
-# AutoGluon (extra credit only) is deliberately not a core dependency: it
-# pulls torch (~2.5 GB). Install it in the notebook:
+# AutoGluon (section 3, "your model") is deliberately not a core
+# dependency: it pulls torch (~2.5 GB). Install it in the notebook:
 #     !pip install -q autogluon.timeseries
 
 [build-system]

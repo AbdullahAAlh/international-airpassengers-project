@@ -69,7 +69,7 @@ However, LogAutoARIMA's 72.9% coverage is still below the nominal 80% target. It
 
 LogAutoARIMA substantially improved forecast accuracy, but some systematic dependence remains in its forecast errors.
 
-The Ljung-Box p-values for the rolling-origin errors were approximately **3.37 × 10^-37 at lag 12** and **2.02 × 10^-47 at lag 24**. These values are far below conventional significance levels, indicating that the remaining errors are not white noise.
+The Ljung-Box p-values for the rolling-origin errors were approximately **9.37 × 10^-37 at lag 12** and **2.02 × 10^-47 at lag 24**. These values are far below conventional significance levels, indicating that the remaining errors are not white noise.
 
 This means that LogAutoARIMA is the best model tested, but it has not captured every repeatable feature of the passenger series. The residual structure and below-target interval coverage both indicate that further improvement may still be possible.
 

@@ -34,6 +34,44 @@
   <div class="muted" style="margin-top:10px">Trend ↑ + annual seasonality + increasing seasonal amplitude</div>
 </div></div></section>
 
+    
+<section>
+  <div class="section-title">
+    <div class="num">↳</div>
+    <h2>تفكيك STL — ما الذي يصنع الشكل؟</h2>
+  </div>
+
+  <div class="card">
+    <p class="muted">
+      نفس السلسلة بعد تفكيكها إلى الاتجاه، الموسمية، والباقي غير المفسر.
+      هذه الرسومات مأخوذة مباشرة من تحليل الـNotebook.
+    </p>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <img class="chart-img" src="stl_trend.png" alt="STL trend component">
+        <div class="caption">Trend — اتجاه صاعد قوي ومستمر</div>
+      </div>
+
+      <div class="chart-card">
+        <img class="chart-img" src="stl_seasonal.png" alt="STL seasonal component">
+        <div class="caption">Seasonal — نمط سنوي واضح يتسع مع الزمن</div>
+      </div>
+
+      <div class="chart-card">
+        <img class="chart-img" src="stl_remainder.png" alt="STL remainder component">
+        <div class="caption">Remainder — معظم القيم حول الصفر مع بعض القفزات</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      Trend strength = <b>1.00</b> و Seasonal strength = <b>0.99</b>،
+      لذلك الاتجاه والموسمية هما المكوّنان المسيطران على السلسلة.
+    </div>
+  </div>
+</section>
+
+
     <section><div class="section-title"><div class="num">2</div><h2>المعيار المرجعي وما تركه على الطاولة</h2></div><div class="card"><p><b>Seasonal Naive</b> هو الـfloor الأساسي لأنه يكرر قيمة نفس الشهر من السنة الماضية. لكنه لم يفسر كل البنية الزمنية: اختبارات Ljung-Box عند lag 12 و24 أعطت p-values صغيرة جدًا، أي أن الأخطاء ليست white noise.</p><div class="callout warn">المعنى: الموسمية وحدها لا تكفي. ما زالت هناك بنية مرتبطة بالاتجاه وتغير حجم الموسمية يمكن لنموذج أكثر مرونة استغلالها.</div></div></section>
 
     <section><div class="section-title"><div class="num">3</div><h2>الحكم: مقارنة النماذج على 8 نوافذ</h2></div><div class="card"><table><thead><tr><th>النموذج</th><th>MASE</th><th>RMSSE</th><th>Scaled CRPS</th><th>80% Coverage</th><th>Worst-fold MASE</th></tr></thead><tbody><tr><td>Naive</td><td>2.119</td><td>2.452</td><td>0.1103</td><td>68.8%</td><td>3.196</td></tr><tr><td>Seasonal Naive</td><td>1.313</td><td>1.246</td><td>0.0616</td><td>51.0%</td><td>1.959</td></tr><tr><td>AutoARIMA</td><td>0.647</td><td>0.683</td><td>0.0339</td><td>69.8%</td><td>1.594</td></tr><tr class="best"><td>LogAutoARIMA</td><td><b>0.638</b></td><td><b>0.653</b></td><td><b>0.0327</b></td><td><b>72.9%</b></td><td><b>1.173</b></td></tr></tbody></table><div style="height:22px"></div><div class="bars"><div class="bar-row"><div class="bar-label">LogAutoARIMA</div><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div><div class="bar-value">0.638</div></div><div class="bar-row"><div class="bar-label">AutoARIMA</div><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div><div class="bar-value">0.647</div></div><div class="bar-row"><div class="bar-label">Seasonal Naive</div><div class="bar-track"><div class="bar-fill bad" style="width:62%"></div></div><div class="bar-value">1.313</div></div><div class="bar-row"><div class="bar-label">Naive</div><div class="bar-track"><div class="bar-fill bad" style="width:100%"></div></div><div class="bar-value">2.119</div></div></div><div class="muted" style="margin-top:10px">MASE — الأقل أفضل</div>
